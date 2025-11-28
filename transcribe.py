@@ -1,3 +1,5 @@
+import torch
+import torchvision
 import whisper
 import os 
 from datetime import timedelta
@@ -9,7 +11,7 @@ import json
 #tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-multilingual-cased")
 #model = AutoModelForMaskedLM.from_pretrained("google-bert/bert-base-multilingual-cased")
 
-files = list(filter(lambda s : s != "" and (s[-4:] == ".wav" or s[-4:] == ".mp3"), os.popen("ls audio-input").read().split("\n")))
+files = list(filter(lambda s : s != "" and (s[-4:] == ".wav" or s[-4:] == ".mp3" or s[-4:] == ".m4a"), os.popen("ls audio-input").read().split("\n")))
 print(files)
 model = whisper.load_model("medium")
 for file in files:
